@@ -1,3 +1,22 @@
+def check(grid, nb, x, y):
+    res = True
+    #Check the column
+    for i in range(9):
+        #print(grid[i][y])
+        res = res and grid[i][y] != nb
+    #print("------")
+    #Check the row
+    for j in range(9):
+        #print(grid[x][j],end=" ")
+        res = res and grid[x][j] != nb
+    #Check the 3*3 square
+    for i in range(3):
+        for j in range (3):
+            #print(grid[(x//3)*3+i][(y//3)*3+j])
+            res = res and grid[(x//3)*3+i][(y//3)*3+j] != nb
+    return res
+
+
 def print_sudoku_grid(grid):
     i=0
     for row in grid :
@@ -22,3 +41,5 @@ if __name__ == "__main__":
         [6, 4, 0, 3, 0, 0, 0, 0, 0],
     ]
     print_sudoku_grid(grid)
+    print("Let's check if we can put a number somewhere : ")
+    print(check(grid,3,1,1))
